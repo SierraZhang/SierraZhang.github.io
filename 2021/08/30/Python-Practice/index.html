@@ -5,15 +5,24 @@
   
 
   
-  <title>Hexo</title>
+  <title>Python Practice 1 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/index.html">
+  <meta name="description" content="03-课后练习的：《计算思维初步：判断与循环》的代码笔记本（上）  !–&gt; 练习 3.5：解一元二次方程    可以使用下面的公式求一元二次方程 ax2+bx+c&#x3D;0ax2+bx+c&#x3D;0 的两个根： r1&#x3D;−b+b2−4ac⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯√2a,r2&#x3D;−b−b2−4ac⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯√2ar1&#x3D;−b+b2−4ac2a,r2&#x3D;−b−b2−4ac2a 其中 b2−4a">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python Practice 1">
+<meta property="og:url" content="http://example.com/2021/08/30/Python-Practice/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="03-课后练习的：《计算思维初步：判断与循环》的代码笔记本（上）  !–&gt; 练习 3.5：解一元二次方程    可以使用下面的公式求一元二次方程 ax2+bx+c&#x3D;0ax2+bx+c&#x3D;0 的两个根： r1&#x3D;−b+b2−4ac⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯√2a,r2&#x3D;−b−b2−4ac⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯√2ar1&#x3D;−b+b2−4ac2a,r2&#x3D;−b−b2−4ac2a 其中 b2−4a">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://verimake.com/uploads/images/202107/08/39/NfktT7I7jP.png">
+<meta property="og:image" content="https://verimake.com/uploads/images/202107/22/39/PXCnQda62S.png">
+<meta property="og:image" content="data:image/png;base64,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yIoVKzj33HMbfa7e3O1ERCQ35VVirz94rjG1A+qSGTzXlCFDhjBjxgy2bdsGREbPv//++2zduhV3Z/To0dx6660sXboUgHbt2rFz5864/bo7d911F9u3b2fo0KF8/PHHtGvXjvbt27Np0ybmzZtXt239PmNtJyIiuS+vS8oWFRVRWFhITU1NYAPoSkpKmDhxIkOGDGH//v0UFBRw33330bp1a6688krcHTPjV7/6FQDjxo3jqquuoqioiFdeeeWgxwLXXXcdEydOpLq6mjPOOIOFCxdSUFDAgAEDOPnkk+nduzfHHnssgwYNqttn/PjxDBkyhKOPPpr58+c3uZ2IiOS+vJq2tfY99iVLlgAwePBgZs2axUUXXVTXNmjQIMrLy9P6nD1XadpWkfCINSFLvMlaUtk3X7TEedC0rY0oLCykvLy87lb73Llzm2wTEQmLWBOyADEna0ll33yRbRPe5NUVuyRG51QkHMpmlrHpk00HtXc5tAtAk+ueGvVUSvvmi1jnKJ3nIS+v2GufV0vqcvEXPhFpXDITstSuS2XffJFtE96EZlR827Zt2b59uxJSGrg727dvp23btvE3FpGsF2tClniTtaSyb77ItvMQmiv24uJi1q9fz9atWzMdSii0bduW4uLiTIchImlw7YBrGzwDhoYTssRal8q++SLeOWppoUnsBQUF9OzZM9NhiIhkndoBXLFGbTe1LpV980VzzlFLCs3gORERkTBr7uC50DxjFxERESV2ERGRUFFiFxERCREldhERkRAJNLGb2dFm9oyZrTaz18zsoLH/FnG3mb1tZivMbECQMYmIZFr52nLKZpbRZ2ofymaWUb62POV1IrWCft1tL/BDd19qZu2ASjOb7+6v19vmPOC46J/TgXujP0VEQifZ2uux1uXb62USW6CJ3d03AZuin3ea2WqgG1A/sY8EHvLIe3cvmVkHM+sS3VdEJFQmL53coJAJwO59u5m8dHLd50TXKbFLfS1WoMbMegD9gZcPWNUNWFdveX20rUFiN7PxwHiA7t27BxWmiEig0l17Pd/qskt8LTJ4zswOAx4DfuDuHx+4upFdDqqa4+5/cPdSdy/t1KlTEGGKiAQu2drr2VaPXLJX4IndzAqIJPVp7j6rkU3WA0fXWy4GNgYdl4hIJlw74Fratm44wVJtXfFk14nUF+iteIvMofoAsNrd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">
+<meta property="article:published_time" content="2021-08-30T13:35:01.000Z">
+<meta property="article:modified_time" content="2021-09-01T11:50:40.586Z">
 <meta property="article:author" content="John Doe">
+<meta property="article:tag" content="Python Learning">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://verimake.com/uploads/images/202107/08/39/NfktT7I7jP.png">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -62,9 +71,7 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-    <article id="post-Python-Practice" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-Python-Practice" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2021/08/30/Python-Practice/" class="article-date">
   <time datetime="2021-08-30T13:35:01.000Z" itemprop="datePublished">2021-08-30</time>
@@ -77,8 +84,8 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/08/30/Python-Practice/">Python Practice 1</a>
+    <h1 class="article-title" itemprop="name">
+      Python Practice 1
     </h1>
   
 
@@ -619,449 +626,19 @@ else:
     </footer>
   </div>
   
-</article>
-
-
+    
+<nav id="article-nav">
   
-    <article id="post-Week-Without-Walls-Project" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2021/08/30/Week-Without-Walls-Project/" class="article-date">
-  <time datetime="2021-08-30T13:04:01.000Z" itemprop="datePublished">2021-08-30</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/08/30/Week-Without-Walls-Project/">Week Without Walls Project</a>
-    </h1>
+    <a href="/2021/08/30/Week-Without-Walls-Project/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Week Without Walls Project</div>
+    </a>
   
+</nav>
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Week-Without-Walls-Project"><a href="#Week-Without-Walls-Project" class="headerlink" title="Week Without Walls Project"></a>Week Without Walls Project</h1><p><a target="_blank" rel="noopener" href="https://imgtu.com/i/hNVHbD"><img src="https://z3.ax1x.com/2021/08/30/hNVHbD.jpg" alt="hNVHbD.jpg"></a></p>
-<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/hNZnMV"><img src="https://z3.ax1x.com/2021/08/30/hNZnMV.jpg" alt="hNZnMV.jpg"></a></p>
-<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/hNZla4"><img src="https://z3.ax1x.com/2021/08/30/hNZla4.jpg" alt="hNZla4.jpg"></a></p>
-<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/hNepWR"><img src="https://z3.ax1x.com/2021/08/30/hNepWR.jpg" alt="hNepWR.jpg"></a></p>
-<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/hNeFOK"><img src="https://z3.ax1x.com/2021/08/30/hNeFOK.jpg" alt="hNeFOK.jpg"></a></p>
-<p>These are the power points we made:</p>
-<p>Biology PPT:</p>
-<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/hNmd4H"><img src="https://z3.ax1x.com/2021/08/30/hNmd4H.png" alt="hNmd4H.png"></a></p>
-<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/hNmvG9"><img src="https://z3.ax1x.com/2021/08/30/hNmvG9.png" alt="hNmvG9.png"></a></p>
-<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/hNnTWd"><img src="https://z3.ax1x.com/2021/08/30/hNnTWd.png" alt="hNnTWd.png"></a></p>
-<p>Economies PPT:</p>
-<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/hNuVTU"><img src="https://z3.ax1x.com/2021/08/30/hNuVTU.png" alt="hNuVTU.png"></a></p>
-<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/hNuxnx"><img src="https://z3.ax1x.com/2021/08/30/hNuxnx.png" alt="hNuxnx.png"></a></p>
-<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/hNM0df"><img src="https://z3.ax1x.com/2021/08/30/hNM0df.png" alt="hNM0df.png"></a></p>
-<p><img src="C:\Users\wgy\AppData\Roaming\Typora\typora-user-images\image-20210830213247449.png" alt="image-20210830213247449"></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2021/08/30/Week-Without-Walls-Project/" data-id="cksyon1v30000k8v2fcn13rkp" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/School-Activity/" rel="tag">School Activity</a></li></ul>
-
-    </footer>
-  </div>
   
 </article>
-
-
-  
-    <article id="post-Dance-performance-0" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2021/08/17/Dance-performance-0/" class="article-date">
-  <time datetime="2021-08-17T15:11:54.000Z" itemprop="datePublished">2021-08-17</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/08/17/Dance-performance-0/">Dance performance</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Life is all about doing what you truly enjoy without worrying too much about success or failure.</p>
-<p>Honestly, I used to be a very shy girl before entering senior high school. Every time I wanted to </p>
-<p>attempt something, I always abandoned it at the very beginning because of my bashfulness.</p>
-<p>However, a chance experience totally changed that. </p>
-<p>Our school held an art festival during my time in senior 1 and I got the chance to join the dance group. I struggled a lot before making the decision as to whether I should join. I worried excessively about the consequences of not performing very well and being humiliated. Nonetheless, I finally decided to give it a try.</p>
-<p>Then, the rehearsals began. I can still recall clearly that my legs wouldn’t stop shaking when I entered the studio. All the dance moves were linked closely together, so I found it hard to keep up with the dance moves and it was even tougher than I had imagined before. What’s worse, I had a terrible memory of the sequence of moves. When I went home, I found a few bruises on my knees and my legs. However, I totally ignored these and kept practicing hard because I was passionate about dancing. When the final performance came, I was placed on the back line in the group, and we didn’t get the first prize. Still, I enjoyed it a lot and considered this as an opportunity to dance for my own satisfaction.</p>
-<p>It is clear that we are not able to succeed at everything we try to do. So, the most helpful attitude to have is to not push yourself too hard and to consider every challenge as an experience to promote your self-improvement. At least then you know you will not have any regrets because you have already shown yourself that you have the courage and ability to try.</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2021/08/17/Dance-performance-0/" data-id="cksg7k2ix0000u0v2518hbyrg" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Art/" rel="tag">Art</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Application-paragraph" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2021/06/18/Application-paragraph/" class="article-date">
-  <time datetime="2021-06-18T14:20:59.000Z" itemprop="datePublished">2021-06-18</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/06/18/Application-paragraph/">Application paragraph</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Application-paragraph"><a href="#Application-paragraph" class="headerlink" title="Application  paragraph"></a>Application  paragraph</h1><p>While growing up, I was always proud of my ability to self-study without any help and I believed that this was the most efficient way of gaining knowledge.</p>
-<p>In the mock exam during the second semester, I got a low mark in chemistry which frustrated me. Fortunately, this event forced me to review my previous learning method and set the goal of improving my mark. Firstly, I went over the answer sheet from the mock examination and filled out a table, designed by my teacher, to show the specific topics I lost the most marks on as well as the reasons I got answers wrong. Using the table as a guide, I did a lot of reading on the topics I was weak in. Then I asked a senior for help when it came to practicing. She gave me the past paper questions for this topic which was a helpful resource for me. After finishing the questions, I made a portfolio of all the questions I lost marks in. Later on, I found that there were still several complex topics that hadn’t been taught by my teacher. I discussed these topics with my friends at school. Some of them were better at chemistry and helped me to solve some confusing problems. When it came to parts that none of us could work out, we looked for video resources and made notes from the videos. I still found the naming principles for organic substances tricky, so I turned to my school teacher for help. </p>
-<p>As a result of these new efforts, I found that my knowledge of chemistry significantly improved and I started to pay more attention to details which were skipped by me before as I did not have enough awareness through independent study. I am not saying that self-study is not an effective method. In my opinion, the most efficient way to learn is to ask for an appropriate amount of help based on your personal thinking and understanding of the study topics. Other people may have more experience than you and may be able to offer better suggestions to assist you in your study.</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2021/06/18/Application-paragraph/" data-id="ckq2em7yo0000sgv2aabc749o" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Application/" rel="tag">Application</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-了不起的我" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2021/04/02/%E4%BA%86%E4%B8%8D%E8%B5%B7%E7%9A%84%E6%88%91/" class="article-date">
-  <time datetime="2021-04-02T14:14:45.000Z" itemprop="datePublished">2021-04-02</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/04/02/%E4%BA%86%E4%B8%8D%E8%B5%B7%E7%9A%84%E6%88%91/">了不起的我</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Chapter-1-开启行为的改变"><a href="#Chapter-1-开启行为的改变" class="headerlink" title="Chapter 1 开启行为的改变"></a>Chapter 1 开启行为的改变</h1><h2 id="拿回选择的控制权"><a href="#拿回选择的控制权" class="headerlink" title="拿回选择的控制权"></a>拿回选择的控制权</h2><h5 id="为什么会难以改变现状，即使自己清楚改变的重要性"><a href="#为什么会难以改变现状，即使自己清楚改变的重要性" class="headerlink" title="为什么会难以改变现状，即使自己清楚改变的重要性"></a>为什么会难以改变现状，即使自己清楚改变的重要性</h5><p>\1. 认为理想中的状况才算做出选择，选项不够好，就没有选择。</p>
-<p>理想状态未出现–认为“没有选择” 但选择应基于现实而不是理想，才能做出改变</p>
-<p>\2. 不愿承担对自己的责任</p>
-<p><strong>讨论对错的思维方式–</strong> <strong>施</strong>害者和受害者</p>
-<p>自我意识中没有选择（受害者位置）–责任推卸给施害者（假象）–负罪感减轻</p>
-<p>结论：改变是一种选择，需要勇气和自省</p>
-<h5 id="改变的本质"><a href="#改变的本质" class="headerlink" title="改变的本质"></a>改变的本质</h5><p>心里的<strong>“大象和骑象人”</strong>心里的自己和现实的自己</p>
-<p>躯体里的两个自我–感性的自我和理性的自我</p>
-<p>Jonathan Haidt –情感（大象），理智（骑象人）</p>
-<p>对于改变而言–理智提供方向，情感提供动力，了解情感“大象”</p>
-<p><strong>情感的特质：</strong></p>
-<p>\1.   力量大</p>
-<p>\2.   容易被情绪驱动</p>
-<p>\3.   受被强化的经验支配–reason why 改变这么难</p>
-<p>“期待的好处”（抽象，未来，被教导的）</p>
-<p>“大象”不自觉转向–“经验的好处”（具体，过去或当下，切身感受到的）</p>
-<p> WHY？</p>
-<p>- <strong>行为主义</strong></p>
-<p>操作行为主义创始人 Burrhus Skinner </p>
-<p>斯德哥尔摩综合征</p>
-<p> 人行为的塑造原理：强化看作是经验的好处<br> 操作行为主义者 Burrhus Skinner<br> 斯金纳箱——鸽子收到特定的刺激，掌握特定的规律</p>
-<p> 正强化：一个人表现出某种行为时，获得了更多他想要的结果，从而使这种行为更巩固<br> 负强化：一个人表现出某种行为时，他不想要的结果减少了，从而使这种行为更巩固<br> 经验的好处会通过塑造我们的行为，让我们行为的改变变难<br> 改变的本质是创造新经验，用新经验代替旧经验 。新的行为—新的反馈，强化，并切身体验（信息浓度高)<br> 创造新经验，并不断强化—改变</p>
-<p> 心理舒适区：摆脱旧经验<br> 旧经验根深蒂固的原因：心理舒适区<br> 走出心理舒适区<br> 误解：认为的舒适是心理舒适区<br> 另一种心理舒适区：<br> 1.舒适<br> 2.即使处于痛苦的环境，仍不愿意改变（例如：监狱里关押久了的犯人不愿走出监狱）<br> 3.觉得自己配不上好的东西<br> 心理舒适区并不意味着熟悉的环境，而是我们熟悉应对环境的固有方式—只有改变应对方式，才真正走出了心理舒适区</p>
-<p> 心理舒适区带来的控制感（想改变却改变不了的原因）<br> 控制感是安全感的来源—应对焦虑（收到威胁-需要控制感-改变不了）<br> 走出心理舒适区：放下了以前应对焦虑的武器，面对焦虑，寻找新的适应方法</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2021/04/02/%E4%BA%86%E4%B8%8D%E8%B5%B7%E7%9A%84%E6%88%91/" data-id="ckn0ef3bh0000rkv23zs1bbr0" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Notes-of-reading/" rel="tag">Notes of reading</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-National-Economics-Challenge" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2021/02/21/National-Economics-Challenge/" class="article-date">
-  <time datetime="2021-02-21T13:55:42.000Z" itemprop="datePublished">2021-02-21</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/02/21/National-Economics-Challenge/">National Economics Challenge</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <ul>
-<li><h1 id="National-Economics-Challenge"><a href="#National-Economics-Challenge" class="headerlink" title="National Economics Challenge"></a>National Economics Challenge</h1></li>
-<li><h2 id="Economies"><a href="#Economies" class="headerlink" title="Economies"></a>Economies</h2></li>
-</ul>
-<h3 id="Preparing"><a href="#Preparing" class="headerlink" title="-  Preparing"></a>-  Preparing</h3><p>•  I started to prepare for the competition in the November of the year 2020, about a month and a half before the competition. That was my first time to take part in such a formal Economies competition and I didn’t know the most efficient way to prepare . What’s more, we just learnt only a few topics at school at that time.So most of the knowledge were brand new for me. In order to catch up! <a target="_blank" rel="noopener" href="https://imgtu.com/i/yvvoNV"><img src="https://s3.ax1x.com/2021/02/25/yvvoNV.md.jpg" alt="yvvoNV.md.jpg"></a>with the high level of the competition, I tried to learn as much as possible in a few methods .</p>
-<p>•  Firstly, I made my own plan to read the books Principles of Economics . There are two books in total which contains two different topics, microeconomic and macroeconomic . Because of the limitation of time , I just chose several contents that I was not familiar with to read, starting from the microeconomic. I read as much as could during my spare time and took down notes to summarise the main points for me to review later.</p>
-<p>•  This was an example of the notes I took. </p>
-<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/yvzesJ"><img src="https://s3.ax1x.com/2021/02/25/yvzesJ.md.jpg" alt="yvzesJ.md.jpg"></a></p>
-<p>•  Method 2 : Fortunately, there happened to be a great chance for me to take part in the NEC training class held in our school every Tuesday afternoon. The teacher took us to go over the following knowledges and topics in the Economies course-book and in the past papers. The lesson went so fast that I couldn’t keep up in time in class. So I had to take down some notes and record everything the teacher said ,then reviewed by myself after the lesson. The course lasted until a week before the final competition. Although this method was a little bit tiring and not that suitable and efficient for me, it was still undeniable that it definitely forced me to go over the most main points which was impossible to be done all by myself<a target="_blank" rel="noopener" href="https://imgtu.com/i/yxp5MF"><img src="https://s3.ax1x.com/2021/02/25/yxp5MF.md.jpg" alt="yxp5MF.md.jpg"></a><img src="https://imgtu.com/i/yxSUcF" alt="![yxSUcF.md.jpg](https://s3.ax1x.com/2021/02/25/yxSUcF.md.jpg)"><a target="_blank" rel="noopener" href="https://imgtu.com/i/yxSrA1"><img src="https://s3.ax1x.com/2021/02/25/yxSrA1.md.jpg" alt="yxSrA1.md.jpg"></a></p>
-<p>•  Method 3: As the second method was a little bit harsh for me, I came up with the third way at the same period of time: watching the videos one the official website and recorded by other teachers. That was almost the best way of all for me to learn new knowledges. Because it was convenient for me to stop the video at any part I wanted so that it was easier to understand the points and to take better notes. </p>
-<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/yxpHaR"><img src="https://s3.ax1x.com/2021/02/25/yxpHaR.md.jpg" alt="yxpHaR.md.jpg"></a><a target="_blank" rel="noopener" href="https://imgtu.com/i/yxSfnH"><img src="https://s3.ax1x.com/2021/02/25/yxSfnH.md.jpg" alt="yxSfnH.md.jpg"></a></p>
-<p>!                [<img src="https://s3.ax1x.com/2021/02/25/yxSXuQ.md.jpg" alt="yxSXuQ.md.jpg">](ht</p>
-<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/yxpYVA"><img src="https://s3.ax1x.com/2021/02/25/yxpYVA.md.jpg" alt="yxpYVA.md.jpg"></a></p>
-<p>•  Apart from these methods , I also participated in the discussions about the questions with my classmates and team members a lot and I was willing to ask my teacher for help whenever I found the confusing knowledges.</p>
-<h3 id="Final-competition"><a href="#Final-competition" class="headerlink" title="-  Final competition"></a>-  Final competition</h3><p>•  First came the simulated exam. We needed to treat it as seriously as the formal competition and it could help us get familiar with the competition process. I tried to found out the reasons I lost marks in it and reviews the points I needed to consolidate . However, I found the final competition very difficult for me and I didn’t get a satisfactory result, neither did my team. Although I tried my best , I still felt very sorry for other team members. However at any rate, we wouldn’t give up and would still be passionate about Economies.</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/21/National-Economics-Challenge/" data-id="cklf8011y0000hgv21ng4cq71" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Economic-competition/" rel="tag">Economic competition</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Dance-Performance" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/12/27/Dance-Performance/" class="article-date">
-  <time datetime="2020-12-27T13:56:29.000Z" itemprop="datePublished">2020-12-27</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/12/27/Dance-Performance/">Dance Performance</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Dance-Performance"><a href="#Dance-Performance" class="headerlink" title="Dance Performance"></a>Dance Performance</h1><h2 id="School-Art-Festival"><a href="#School-Art-Festival" class="headerlink" title="School Art Festival"></a>School Art Festival</h2><p>-  Our school held the art festival last Wednesday. As a KPOP Dance Club member, I entered for the dance performance.I had learnt ballet for several years at a very young age. However, I had never performed any KPOP dance before that. Nonetheless, I was willing to give it a try.</p>
-<p>-  The rehearsal began on a Friday afternoon at a dance studio. The background music for our dance is a very song called swalla. The rhythm of the song was very intense. What’s more, our dance moves were base on one of Lisa (a member of BLACKPINK)’s stage performances. Two seniors were in charge of teaching us the dance. </p>
-<p>-  As our rehearsal went on, I started to find it hard to do the dance. No matter how hard I tried , my moves were not as good as the other girls’. Also, I had a terrible memory of the moves. I couldn’t stop to sweat as I felt anxious and tired. However, I still had a very strong desire of greatly performing the dance . This feeling kept running in my blood and I couldn’t resist it. I was passionate about dancing. <a target="_blank" rel="noopener" href="https://imgchr.com/i/rIRQfO"><img src="https://s3.ax1x.com/2020/12/27/rIRQfO.jpg" alt="rIRQfO.jpg"></a></p>
-<p>-  After I went home , I suddenly found a few of bruises on my knees and my straddle. I didn’t even notice that when I was practicing but I suffered from the ache the following days. Meanwhile I spent all of my spare time watching the video of Lisa’s stage performance . She did it perfectly. All her moves looked both smooth and powerful. She really got the rhythm. The way she dealt with her facial expressions was also fantastic. I couldn’t stop watching her dance and try to correct my moves over and over again. I was totally into it. In my opinion,the hardest part of the dance was the move called ‘wave’. It was very challenging for the dancers to control their body properly . So I stared at myself doing this move till I was satisfied with that.</p>
-<p>-  Although when the final performance came, I was still not able to do the performance perfectly and we didn’t got the first prize. I enjoyed the total process very much.</p>
-<p>-  I have admired the Korean POP dancer and singer Taemin for a very long time. I am fund of watching his dance performances. Before my personal experience of doing the dance performance, I only thought about his perfect move. Now, I start to realize how much effort he had put into his dance practice. That’s why the side he shows to us was always perfect. ‘No victory comes without price.’ The combination of passion and effort is the only way to success. <a target="_blank" rel="noopener" href="https://imgchr.com/i/rIW5IP"><img src="https://s3.ax1x.com/2020/12/27/rIW5IP.jpg" alt="rIW5IP.jpg"></a><a target="_blank" rel="noopener" href="https://imgchr.com/i/rIWqMQ"><img src="https://s3.ax1x.com/2020/12/27/rIWqMQ.jpg" alt="rIWqMQ.jpg"></a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2020/12/27/Dance-Performance/" data-id="ckj77dcc60000y4v27f258axh" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Art/" rel="tag">Art</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Drama-Club-Haunted-House" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/11/30/Drama-Club-Haunted-House/" class="article-date">
-  <time datetime="2020-11-30T14:27:13.000Z" itemprop="datePublished">2020-11-30</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/11/30/Drama-Club-Haunted-House/">Drama Club-Haunted House</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Drama-Club"><a href="#Drama-Club" class="headerlink" title="Drama Club"></a>Drama Club</h1><h2 id="Haunted-House"><a href="#Haunted-House" class="headerlink" title="Haunted House"></a>Haunted House</h2><h3 id="Preparations"><a href="#Preparations" class="headerlink" title="Preparations"></a>Preparations</h3><p>•    The club leader released us a script “ghost groom”. And let us sign up for the roles we wanted to play. The play told a story about a weird and horrible story took place in a medieval village. Briefly it was a immersive play. All the actors and actresses acted as ghosts(NPC) and guide of the haunted house and the audiences were the visitors and players. I read the script and found it very interesting. So I took the role of ghost bride.This is the introduction of our script.<a target="_blank" rel="noopener" href="https://imgchr.com/i/srK3y8"><img src="https://s3.ax1x.com/2021/01/16/srK3y8.jpg" alt="srK3y8.jpg"></a></p>
-<p>•    One week  before the final show , our drama club started the rehearsal. For the whole week ,we did the rehearsals for about 2 hours a day after school. The rehearsal took place at the senior3 students’ classroom where the haunted house supposed to be .We worked really hard every afternoon. We were all students who had never been in any play before and  we all got a large amount of homework to do after school. And that was the very first time I had a strong realization of balancing the activities and homework. We brainstormed the best ideas of scaring people to make sure the visitors could get the best experience. One day before the final show, the former President of the drama club came to give us some guidance. She is a drama major student at an university abroad currently .She was usually a very friendly person . But when it came to the drama stuff, she immediately became very professional and serious. Her attitude to drama did inspired me a lot that day. She gave us very useful advice and she even did the performance herself as a demonstration. We followed her instructions and found it so much better in that way. As ghost brides ,me and other 3 actresses needed to knock down the table in front of us when the ghost groom said ‘Enjoy your meal’. And we acted like we had been asleep for thousands of years. Then we had to go forward, stumbling, undulating and fast. Then we lunged at the audience, whimpering. It was 7 o’clock in the evening and we all thought we were well prepared.</p>
-<h3 id="Final-Performance"><a href="#Final-Performance" class="headerlink" title="Final Performance"></a>Final Performance</h3><p>•    On Oct.14th, we started to do the preparation<a target="_blank" rel="noopener" href="https://imgchr.com/i/srKIOO"><img src="https://s3.ax1x.com/2021/01/16/srKIOO.jpg" alt="srKIOO.jpg"></a> for the show at noon. First the make up , which was a very important part of the haunted house actors, was done by a senior 3 student. She did it quite incredible as the make ups were different for different roles. She even dropped the fake blood on our faces to make it as horrible as possible .<a target="_blank" rel="noopener" href="https://imgchr.com/i/srKIOO"><img src="https://s3.ax1x.com/2021/01/16/srKIOO.jpg" alt="srKIOO.jpg"></a><a target="_blank" rel="noopener" href="https://imgchr.com/i/srM0Nd"><img src="https://s3.ax1x.com/2021/01/16/srM0Nd.jpg" alt="srM0Nd.jpg"></a>Then, after the set was done , the shows began at 4p.m. when we got the audiences’ list ,we were surprised at the large number of visitors since they needed to pay 5 yuan each for the show. We felt we were very supportive. The show needed to be performed one after another every 15 minutes. <a target="_blank" rel="noopener" href="https://imgchr.com/i/srMB4A"><img src="https://s3.ax1x.com/2021/01/16/srMB4A.jpg" alt="srMB4A.jpg"></a>We needed to wait in our red wedding dress and sat in the darkness quite when one turn of visitors left and that was the only time we could rest. The formal show with audiences were quite different from the rehearsal. We needed to adapt ourselves to circumstances. We must act in the way our role should did even when a visitor tried to get close to us without the guidance. And if we found the visitor was not scared , we needed to change our performance immediately . We were all exhausted after the show and I felt my throat was burning since I screamed too much.</p>
-<h3 id="Feelings"><a href="#Feelings" class="headerlink" title="Feelings"></a>Feelings</h3><p>•    Nothing is easy if we do treat it seriously. Professional acting is very high-qualified. It really requires a lot of effort to be put in. I really like the way a team does one thing together seriously. I enjoy the feeling of acting. And I was so moved by the professional attitude and I will try to do things in this way. <a target="_blank" rel="noopener" href="https://imgchr.com/i/srMwAH"><img src="https://s3.ax1x.com/2021/01/16/srMwAH.jpg" alt="srMwAH.jpg"></a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2020/11/30/Drama-Club-Haunted-House/" data-id="cki4nllf000003ov26ipebrpq" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Drama-Club/" rel="tag">Drama Club</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Drama-Club" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/11/15/Drama-Club/" class="article-date">
-  <time datetime="2020-11-15T13:36:54.000Z" itemprop="datePublished">2020-11-15</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/11/15/Drama-Club/">Drama Club</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Audition"><a href="#Audition" class="headerlink" title="Audition"></a>Audition</h1><h2 id="Preparation"><a href="#Preparation" class="headerlink" title="Preparation"></a>Preparation</h2><p>•     I have always had a dream about acting since a very young age. At the beginning of this term. We got a chance to choose the club we liked. And for Drama Club , everyone is required to pass the audition for being a club member. Before I had never done the acting in front of many people’s staring eyes. But I did have the strong longing to act. So I decided to give a shot .</p>
-<p>•  1 week before the audition, the original club leader sent us the scripts as the audition’s content .<a target="_blank" rel="noopener" href="https://imgchr.com/i/srl70U"><img src="https://s3.ax1x.com/2021/01/16/srl70U.md.jpg" alt="srl70U.md.jpg"></a></p>
-<p>•  I decided to chose the male role as I wanted to try to transpose. Later ,when I was doing the preparation，I found the content and the spirit of it was quite difficult to understand.I even watched the video of professional actors and actress acting the play. Then I practiced again and again till I think there’s no improvement I could make .However due to the limited time, I didn’t really remember all the words from the scripts when I was about to join the audition.</p>
-<h2 id="Audition-1"><a href="#Audition-1" class="headerlink" title="Audition"></a>Audition</h2><p>•  When I entered the audition room, the club leader and a few original club members had already sat there in a big circle waiting for us. I chose a seat to sit down with nervous in my heart. The audition began, the two guys unexpectedly did the brilliant job. They acted without looking at the scripts and acted like the professional actresses who had been in their career for several years. I could sense the emotions and feelings from their acting. Finally they all got very high praise from the club leader. Then it was my turn.All of the sudden, I really felt my heart was about to jump out of my mouth. But I forced myself to calm down and never lose heart. I had to took my scripts with my shaking hand and walked slowly to the middle of the circle. I first bowed and started my acting. It was not that bad as I thought. In the first moment I started to act the first scene，I suddenly calmed down and got into the atmosphere. I acted as I was the man using all his feelings and words to show his <a target="_blank" rel="noopener" href="https://imgchr.com/i/srlH7F"><img src="https://s3.ax1x.com/2021/01/16/srlH7F.md.jpg" alt="srlH7F.md.jpg"></a>love to the girl.  The struggled feeling bumped in the air around me. When it came to the second scene, I acted as Romeo in the famous Shakespeare play. It was the self-chosen script and I had to act in English. I was not as good as the two girls before but at least I did my best and didn’t shrink back. The club leader then made her commentary. She said in the first scene, I tried to make the eye contact with the audience and that was a good thing. However in the second scene my English pronunciation was a little bit strange but that was fine because I could take the vocalization exercise in the future. Also, The fact that I wasn’t off scripts affected my performances in someways. I took her suggestions by heart and was grateful for this amazing chance this audition offered.</p>
-<hr>
-<p>This is the script I chose </p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2020/11/15/Drama-Club/" data-id="ckhj66om40000bov2721584fs" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Club/" rel="tag">Club</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-The-Dragon-Boat-Race" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/11/08/The-Dragon-Boat-Race/" class="article-date">
-  <time datetime="2020-11-08T13:08:21.000Z" itemprop="datePublished">2020-11-08</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/11/08/The-Dragon-Boat-Race/">The Dragon Boat Race</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>What is Dragon Boat Race?**🐲</p>
-<p>The dragon boat race is an ancient Chinese folk custom activity and the main custom of the Dragon Boat Festival which is a traditional Han festival. It’s not only a sports and entertainment activity, but also reflects the patriotism and collectivism in people’s hearts.</p>
-<p><strong>Selection</strong></p>
-<p>I have never imagined myself attending a dragon boat race. I grow up by the Qinhuai River. Every year, I can watch the race taking place in the river and hear the fierce drums 🥁. I was always impressed by tension made by the race. When the first term just began, school told us we could attend the dragon boat race by passing the selection. That means there was a chance I could finally experience the race by myself. The selection was planned to start at the noon and include push-ups. That required much strength and was especially hard for girls. I tried my best to do the push-ups as much as I could until I was out of breath. And finally, I was told that I made it through the tryouts.</p>
-<p><strong>Training</strong> </p>
-<p>The training took place twice a week on Monday and Thursday. Every training was conducted in the dragon boat on the Qinhuai River where we would take the final race. Every time I start to recall, the scene of our first training still comes to mind like it just happened yesterday. I remembered it was a rainy day ☔. We almost carelessly lost our way to the training place. As soon as we got there, we were all told to put on the life jackets and get on the dragon boat. Since then, we have been a team. All trainings were similar from September to October, but we kept moving forward step by step. I wasn’t absent from any training. We hurried to the riverside after school whatever it was rainy or sunny. Getting on the boat, taking up the quant have been a habit for us. First, we were like spoiled kids. We distained the dirty water 💦 splashed to our face and the boiling action of raising the quant and inserting it into the water. But later, with the encouraging and instructions from our coach. We started to enjoy the trainings. By the time we were going to get into the race, we all felt that we were so ready.</p>
-<p><strong>Final race</strong></p>
-<p>The final race took place on 2020/10/31. It was a windless, sunny day. Team members from Pre-IB and PAL arrived at the rest area on the river bank at 7:40 a.m. All my families came to see me and I felt so moved and cheerful because of this. We gathered and were told by our leading teacher that since we had participated, we all needed to try our best to exert our greatest strength and we would not regret if we all tried our best. We folded our hands together and claimed to be the best. Also, food and drinks were well prepared for us. The first two race we took part in were not that satisfied because the team was made up temporarily, with people we had never cooperated with. Luckily, all of us didn’t lose our heart and learnt from the failure. That was the time I felt the morale was risen up in the team. We sweared that we would fight it out I the coming five-hundred and two-hundred race. Then we walked to the dragon boat like a group of soldiers ready to fight with extreme peace in our mind. And the life jackets were like our armors. We were cheerful and organized. When our team’s name was called, we shouted out loud 🔊. We shouted with all our might to cheer ourself up and used up all our energy trying to catch up with the boat in front of us. Nobody had time to care about the spray splashed all over the body. And everybody was exhausted as soon as we crossed the final line. That was the first time in life that I finally realized how strong and powerful it could be when everyone’s heart was linked to each other’s in a team. And that’s the beauty of team work. It didn’t really matter what prize we final got since we all tried our best. Actually, we got a first prize and a second prize 🏆. After the race, our leader said to us ‘Today you should feel, what means to stick to the end, and the strength of a team. I hope it can help you in your future 🔮, both study and life.’ </p>
-<p>url=<a target="_blank" rel="noopener" href="https://imgchr.com/i/BrGEjIhttps://s1.ax1x.com/2020/11/02/BrGEjI.md.jpg/img">https://imgchr.com/i/BrGEjIhttps://s1.ax1x.com/2020/11/02/BrGEjI.md.jpg/img</a></p>
-<p><strong>Conclusion</strong></p>
-<p>Our dragon boat team is really good. During the long training period, we all worded together to ride the waves. Specially thanks to our lovely instructor. We were lucky for being the‘worst team’ he hever led. We in the team worked particularly well together, everyone shouted loudly together, paddled together, crossed the line together, it was a bloom moment for us, and it was a great experience, and it was a pleasure to have it. That’s the end.</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2020/11/08/The-Dragon-Boat-Race/" data-id="ckh94wowu0000qcv285ra6ljx" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Activities-Feelings/" rel="tag">Activities & Feelings</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-
-
-  <nav id="page-nav">
-    
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
-  </nav>
 
 </section>
         
